@@ -31,18 +31,19 @@ variable "helm_releases_tests" {
 
 variable "tags" {
   type        = map(string)
-  description = <<-DESC
-  A map of tags to add to all resources.
-  Tags are key-value pairs that help in organizing and identifying AWS resources.
-  Ensure to provide meaningful tags for better resource management.
+  description = <<-EOT
+    A map of tags to apply to all AWS resources.
 
-  Example:
-  tags = {
-    "environment"   = var.name
-    "stage"         = "dev"
-    "slack_channel" = "sre-infra"
-    "team"          = "sre"
-  }
-  DESC
+    Tags are key-value pairs that provide metadata for your AWS resources. They help you organize and identify resources for various purposes, such as cost allocation, automation, and security.
+
+    Example:
+    tags = {
+      capability_name = "eks"
+      stage           = "dev"
+      slack_channel   = "sre-infra"
+      team            = "sre"
+    }
+
+  EOT
   default     = {}
 }

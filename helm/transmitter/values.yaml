@@ -1,0 +1,5 @@
+transmitterNetworkPolicy:
+  create: false
+
+namespace:
+  create: false
