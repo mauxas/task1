@@ -45,5 +45,5 @@ variable "tags" {
     }
 
   EOT
-  default = {}
+  default     = {}
 }

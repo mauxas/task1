@@ -14,7 +14,7 @@ variable "tags" {
     }
 
   EOT
-    default = {
+  default = {
     "capability_name" = "eks"
     "stage"           = "dev"
     "slack_channel"   = "sre-infra"
