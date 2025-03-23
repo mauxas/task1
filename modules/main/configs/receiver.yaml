@@ -8,5 +8,6 @@ namespace:
 
 receiverToAllowTransmitterNetworkPolicy:
   transmitterLabel: transmitter
+  create: true
   namespace:
     name: transmitter

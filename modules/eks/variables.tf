@@ -1,42 +1,25 @@
 variable "cluster_name" {
-  description = "Name used across created resources"
+  description = "Name used across created resources for cluster"
   type        = string
   default     = "matas-eks"
 }
 
-variable "node_group_name" {
-  description = "Name used for node group naming"
-  type        = string
-  default     = "worker"
-}
-
-variable "disk_size" {
-  description = "Disk size of worker node group"
-  type        = number
-  default     = 50
-}
-
-variable "instance_types" {
-  description = "Instance type of worker node group"
-  type        = list(string)
-  default     = ["t3.medium"]
-}
-
 variable "tags" {
   type        = map(string)
-  description = <<-DESC
-  A map of tags to add to all resources.
-  Tags are key-value pairs that help in organizing and identifying AWS resources.
-  Ensure to provide meaningful tags for better resource management.
+  description = <<-EOT
+    A map of tags to apply to all AWS resources.
 
-  Example:
-  tags = {
-    "capability_name"   = var.name
-    "stage"         = "dev"
-    "slack_channel" = "sre-infra"
-    "team"          = "sre"
-  }
-  DESC
+    Tags are key-value pairs that provide metadata for your AWS resources. They help you organize and identify resources for various purposes, such as cost allocation, automation, and security.
+
+    Example:
+    tags = {
+      capability_name = "eks"
+      stage           = "dev"
+      slack_channel   = "sre-infra"
+      team            = "sre"
+    }
+
+  EOT
   default = {
     "capability_name" = "eks"
     "stage"           = "dev"
@@ -46,7 +29,21 @@ variable "tags" {
 }
 
 variable "node_groups" {
-  description = "A map of node groups to create, with their configurations."
+  description = <<-EOT
+    A map of node groups to create for the EKS cluster, with their configurations.
+
+    Each key in the map represents the name of a node group. The value is an object containing the configuration for that node group.
+
+    Node Group Configuration:
+    - node_group_name: The name of the node group.
+    - desired_size: The desired number of nodes in the node group.
+    - maximum_size: The maximum number of nodes allowed in the node group.
+    - minimum_size: The minimum number of nodes allowed in the node group.
+    - disk_size: The disk size (in GiB) for the nodes' root volume.
+    - instance_types: A list of EC2 instance types to use for the nodes.
+    - tags: A map of tags to apply to the node group's resources.
+
+  EOT
   type = map(object({
     node_group_name = string
     desired_size    = number
@@ -59,7 +56,7 @@ variable "node_groups" {
   default = {
     "workers" = {
       node_group_name = "worker"
-      desired_size    = 4
+      desired_size    = 2
       maximum_size    = 5
       minimum_size    = 1
       disk_size       = 50
@@ -72,34 +69,4 @@ variable "node_groups" {
       }
     }
   }
-}
-
-variable "cidr_block" {
-  description = "Cidr range for vpc"
-  type        = string
-  default     = "10.0.0.0/16"
-}
-
-variable "instance_tenancy" {
-  description = "Instance tenancy"
-  type        = string
-  default     = "default"
-}
-
-variable "enable_dns_hostnames" {
-  description = "Toggle for enabling dns hostnames"
-  type        = bool
-  default     = true
-}
-
-variable "health_probe_bind_address" {
-  description = "Toggle for enabling dns hostnames"
-  type        = string
-  default     = "8163"
-}
-
-variable "metrics_bind_address" {
-  description = "Toggle for enabling dns hostnames"
-  type        = string
-  default     = "8162"
 }

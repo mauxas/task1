@@ -6,7 +6,6 @@ callTimeout: "3"
 
 namespace:
   name: default
-  create: false
 
 transmitterNetworkPolicy:
   receiverLabel: receiver

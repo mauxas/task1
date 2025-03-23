@@ -10,5 +10,6 @@ namespace:
 
 transmitterNetworkPolicy:
   receiverLabel: receiver
+  create: true
   namespace:
     name: receiver
