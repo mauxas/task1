@@ -1,0 +1,30 @@
+name: Terraform Format Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  terraform_fmt:
+    name: Check Terraform Format
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: latest
+
+      - name: Terraform Format Check
+        id: fmt
+        run: terraform fmt -check
+
+      - name: Fail if Terraform Format is Incorrect
+        if: steps.fmt.outcome != 'success'
+        run: |
+          echo "Terraform format check failed. Please run 'terraform fmt' to format your code."
+          exit 1
