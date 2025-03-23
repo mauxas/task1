@@ -59,11 +59,11 @@ variable "node_groups" {
   default = {
     "workers" = {
       node_group_name = "worker"
-      desired_size    = 2
+      desired_size    = 4
       maximum_size    = 5
       minimum_size    = 1
       disk_size       = 50
-      instance_types  = ["t3.medium"]
+      instance_types  = ["t3.micro"]
       tags = {
         capability_name = "eks"
         stage           = "dev"

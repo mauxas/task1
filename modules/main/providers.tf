@@ -43,9 +43,9 @@ terraform {
 
 terraform {
   backend "s3" {
-    bucket         = "test-tf-state-matas"
-    key            = "eks-main/state"
-    encrypt        = true
-    dynamodb_table = "test-tf-state-matas"
+    bucket       = "test-tf-state-matas2"
+    key          = "eks-main/state"
+    encrypt      = true
+    use_lockfile = true
   }
 }
