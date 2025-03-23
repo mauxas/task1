@@ -37,11 +37,11 @@ variable "tags" {
     "team"          = "sre"
   }
   DESC
-  default     = {
-    "capability_name"   = "eks"
-    "stage"         = "dev"
-    "slack_channel" = "sre-infra"
-    "team"          = "sre"
+  default = {
+    "capability_name" = "eks"
+    "stage"           = "dev"
+    "slack_channel"   = "sre-infra"
+    "team"            = "sre"
   }
 }
 

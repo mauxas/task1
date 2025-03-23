@@ -21,7 +21,9 @@ jobs:
 
       - name: Terraform Format Check
         id: fmt
-        run: terraform fmt -check
+        run: |
+          cd modules
+          terraform fmt -check --recursive
 
       - name: Fail if Terraform Format is Incorrect
         if: steps.fmt.outcome != 'success'
