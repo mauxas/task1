@@ -17,7 +17,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: latest
+          terraform_version: "TERRAFORM_VERSION=$(cat .terraform-version)"
 
       - name: Terraform Format Check
         id: fmt
@@ -41,7 +41,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: latest
+          terraform_version: "TERRAFORM_VERSION=$(cat .terraform-version)"
 
       - name: Terraform Init
         working-directory: ./modules/main
