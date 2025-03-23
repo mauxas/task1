@@ -21,9 +21,8 @@ jobs:
 
       - name: Terraform Format Check
         id: fmt
-        run: |
-          cd modules
-          terraform fmt -check --recursive
+        working-directory: ./modules
+        run: terraform fmt -check --recursive
 
       - name: Fail if Terraform Format is Incorrect
         if: steps.fmt.outcome != 'success'
@@ -44,12 +43,10 @@ jobs:
         with:
           terraform_version: latest
 
-      - name: Navigate to Modules Directory
-        run: |
-          cd modules/main
-
       - name: Terraform Init
+        working-directory: ./modules/main
         run: terraform init
 
       - name: Terraform Plan
+        working-directory: ./modules/main
         run: terraform plan
