@@ -1,0 +1,12 @@
+name: receiver
+image:
+  version: v0.0.2
+
+namespace:
+  name: receiver
+  create: true
+
+receiverToAllowTransmitterNetworkPolicy:
+  transmitterLabel: transmitter
+  namespace:
+    name: transmitter

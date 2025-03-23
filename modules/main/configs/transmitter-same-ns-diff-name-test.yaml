@@ -1,0 +1,14 @@
+name: transmitter2
+image:
+  version: v0.0.3
+repeaterSeconds: "10"
+callTimeout: "3"
+
+namespace:
+  name: transmitter
+  create: false
+
+transmitterNetworkPolicy:
+  receiverLabel: receiver
+  namespace:
+    name: receiver
