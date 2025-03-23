@@ -31,8 +31,8 @@ terraform {
       version = "~> 2.17.0" # or your desired version
     }
     kubernetes = {
-        source  = "hashicorp/kubernetes"
-        version = "~> 2.36.0" # or your desired version, kubernetes provider is needed.
+      source  = "hashicorp/kubernetes"
+      version = "~> 2.36.0" # or your desired version, kubernetes provider is needed.
     }
     aws = {
       source  = "hashicorp/aws"
@@ -43,9 +43,9 @@ terraform {
 
 terraform {
   backend "s3" {
-    bucket = "test-tf-state-matas"
-    key    = "eks-main/state"
-    encrypt = true
+    bucket         = "test-tf-state-matas"
+    key            = "eks-main/state"
+    encrypt        = true
     dynamodb_table = "test-tf-state-matas"
   }
 }

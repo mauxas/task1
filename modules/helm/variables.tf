@@ -1,18 +1,18 @@
 variable "helm_releases" {
   description = "A map of Helm releases to deploy from local charts."
   type = map(object({
-    name         = string
-    chart_path   = string
-    values_file  = string
-    namespace    = optional(string, "default") # Optional namespace, defaults to "default"
+    name        = string
+    chart_path  = string
+    values_file = string
+    namespace   = optional(string, "default") # Optional namespace, defaults to "default"
     # Add other helm_release options as needed
   }))
   default = {
     "receiver" = {
-      name         = "receiver"
-      chart_path   = "../../helm/receiver"
-      values_file  = "receiver-values.yaml" # example values file name.
-      namespace    = "my-namespace" # example namespace.
+      name        = "receiver"
+      chart_path  = "../../helm/receiver"
+      values_file = "receiver-values.yaml" # example values file name.
+      namespace   = "my-namespace"         # example namespace.
     }
   }
 }
@@ -20,10 +20,10 @@ variable "helm_releases" {
 variable "helm_releases_tests" {
   description = "A map of Helm releases to deploy from local charts."
   type = map(object({
-    name         = string
-    chart_path   = string
-    values_file  = string
-    namespace    = optional(string, "default") # Optional namespace, defaults to "default"
+    name        = string
+    chart_path  = string
+    values_file = string
+    namespace   = optional(string, "default") # Optional namespace, defaults to "default"
     # Add other helm_release options as needed
   }))
   default = {}

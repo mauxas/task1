@@ -1,6 +1,6 @@
 module "vpc" {
   source = "../vpc"
-  tags = var.tags
+  tags   = var.tags
 }
 
 resource "aws_eks_cluster" "main" {
